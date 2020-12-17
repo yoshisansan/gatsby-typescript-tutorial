@@ -9,6 +9,7 @@ interface SEOTypes {
   meta?: any,
   title: string,
 }
+
 const SEO = ({
   description,
   lang,

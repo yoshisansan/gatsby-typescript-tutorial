@@ -18,5 +18,5 @@
     "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
   },
   "include": ["src/**/*", "gatsby-node/index.ts"],
-  "exclude": ["node_modules", "public", "build"]
+  "exclude": ["node_modules", "public", "build", "src/templates/blog-post.tsx"]
 }

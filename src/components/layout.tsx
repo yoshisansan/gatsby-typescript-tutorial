@@ -1,9 +1,8 @@
 /** @jsx jsx */
-import {FC} from "react"
+import { FC } from "react"
 import { jsx, css } from "@emotion/react"
 import { useStaticQuery, Link, graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
-
 
 const Layout: FC = ({ children }) => {
   const data = useStaticQuery<GatsbyTypes.LayoutSiteMetadataQuery>(

@@ -30,13 +30,12 @@ export const createPages: GatsbyNode["createPages"] = async ({ graphql, actions 
   }
   `)
   const { data } = result || 'undefined';
-  if( data === undefined) {
-    throw 'データがありません';
-  }
+  if( data === undefined) throw 'データが見つかりませんでした';
+
   data.allMarkdownRemark.edges.forEach(({node}) => {
     if(node.fields){
     createPage({
-      path: node.fields.slug || 'undefined',
+      path: node.fields.slug || '/undefined',
       component: path.resolve(`./src/templates/blog-post.tsx`),
       context: {
         slug: node.fields.slug

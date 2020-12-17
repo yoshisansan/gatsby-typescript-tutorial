@@ -33,7 +33,6 @@
     "typography-theme-kirkham": "^0.16.19"
   },
   "devDependencies": {
-    "@theme-ui/typography": "^0.3.4",
     "@types/react-helmet": "^6.1.0",
     "@types/typography": "^0.16.3",
     "prettier": "2.1.2",
