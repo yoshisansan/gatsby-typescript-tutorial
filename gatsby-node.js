@@ -1,40 +1,20 @@
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
-  if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` })
-    createNodeField({
-      node,
-      name: `slug`,
-      value: slug,
-    })
-  }
-}
+"use strict"
 
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
-  const result = await graphql(`
-    query {
-      allMarkdownRemark {
-        edges {
-          node {
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    }
-  `)
+require("ts-node").register({
+  compilerOptions: {
+    module: "commonjs",
+    target: "esnext",
+  },
+})
 
-  result.data.allMarkdownRemark.edges.forEach(({node}) => {
-    createPage({
-      path: node.fields.slug,
-      component: path.resolve(`./src/templates/blog-post.js`),
-      context: {
-        slug: node.fields.slug
-      }
-    })
-  })
-}
+require("./src/__generated__/gatsby-types")
+
+const {
+  createPages,
+  onCreateNode,
+  createSchemaCustomization,
+} = require("./gatsby-node/index")
+
+exports.createPages = createPages
+exports.onCreateNode = onCreateNode
+exports.createSchemaCustomization = createSchemaCustomization

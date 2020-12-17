@@ -1,10 +1,11 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import { css } from "@emotion/react"
+/** @jsx jsx */
+import {FC} from "react"
+import { jsx, css } from '@emotion/react'
+import { Link, graphql, PageProps } from "gatsby"
 import { rhythm } from "../utils/typography"
 import Layout from "../components/layout"
 
-export default function Home({ data }) {
+const Home: FC<PageProps<GatsbyTypes.MarkdownOfIndexQuery>> = ({data}) => {
   return (
     <Layout>
       <div>
@@ -20,7 +21,7 @@ export default function Home({ data }) {
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <div key={node.id}>
             <Link
-              to={node.fields.slug}
+              to={node.fields?.slug || '/'}
               css={css`
                 text-decoration: none;
                 color: inherit;
@@ -31,13 +32,13 @@ export default function Home({ data }) {
                 margin-bottom: ${rhythm(1 / 4)};
               `}
             >
-              {node.frontmatter.title}{" "}
+              {node.frontmatter?.title}{" "}
               <span
                 css={css`
                   color: #bbb;
                 `}
               >
-                — {node.frontmatter.date}
+                — {node.frontmatter?.date}
               </span>
             </h3>
             <p>{node.excerpt}</p>
@@ -50,7 +51,7 @@ export default function Home({ data }) {
 }
 
 export const query = graphql`
-  query {
+  query MarkdownOfIndex {
     allMarkdownRemark {
       totalCount
       edges {
@@ -69,3 +70,5 @@ export const query = graphql`
     }
   }
 `
+
+export default Home

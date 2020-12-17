@@ -3,6 +3,7 @@ module.exports = {
     title: `typescriptのテスト gatsbyのチュートリアル参考：https://www.gatsbyjs.com/tutorial/part-four/`,
     description: `これは説明文章ですよ`,
     author: `gatsbyJSマン`,
+    meta: [],
   },
   plugins: [
     `gatsby-plugin-emotion`,
@@ -34,5 +35,6 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    // `gatsby-plugin-typegen`,
   ],
 }

@@ -1,12 +1,14 @@
-import React from "react"
-import { css } from "@emotion/react"
+/** @jsx jsx */
+import {FC} from "react"
+import { jsx, css } from "@emotion/react"
 import { useStaticQuery, Link, graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
 
-export default function Layout({ children }) {
-  const data = useStaticQuery(
+
+const Layout: FC = ({ children }) => {
+  const data = useStaticQuery<GatsbyTypes.LayoutSiteMetadataQuery>(
     graphql`
-    query {
+    query LayoutSiteMetadata {
       site {
         siteMetadata {
           title
@@ -32,7 +34,7 @@ export default function Layout({ children }) {
             font-style: normal;
           `}
         >
-          {data.site.siteMetadata.title}
+          {data.site?.siteMetadata?.title}
         </h3>
       </Link>
       <Link
@@ -47,3 +49,5 @@ export default function Layout({ children }) {
     </div>
   )
 }
+
+export default Layout

@@ -1,8 +1,8 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React, {FC} from "react"
+import { graphql, PageProps } from "gatsby"
 import Layout from "../components/layout"
-export default function MyFiles({ data }) {
-  console.log(data)
+
+const MyFiles: FC<PageProps<GatsbyTypes.myFilesAllFileQuery>> = ({data}) => {
   return (
     <Layout>
       <div>
@@ -31,8 +31,9 @@ export default function MyFiles({ data }) {
     </Layout>
   )
 }
+
 export const query = graphql`
-  query {
+  query myFilesAllFile {
     allFile {
       edges {
         node {
@@ -45,3 +46,5 @@ export const query = graphql`
     }
   }
 `
+
+export default MyFiles
